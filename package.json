@@ -1,0 +1,31 @@
+{
+  "name": "koa-routeify",
+  "version": "1.0.1",
+  "description": "koa router ",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/song940/koa-routeify.git"
+  },
+  "keywords": [
+    "koa",
+    "router"
+  ],
+  "author": {
+    "name": "lsong"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/song940/koa-routeify/issues"
+  },
+  "homepage": "https://github.com/song940/koa-routeify#readme",
+  "dependencies": {
+    "path-to-regexp": "^1.2.0"
+  },
+  "readme": "## koa-routeify ![npm](https://badge.fury.io/js/koa-routeify.png)\n\nkoa router\n\n### Installation\n\n````\n$ npm install koa-routeify --save\n````\n\n### Example\n````javascript\nimport koa      from 'koa';\nimport routeify from 'koa-routeify';\n\nconst app = koa();\n\napp.use(routeify(app));\n\napp.listen(3000);\n````\n\n### API\ncheck this file: `index.js`\n\n### Contributing\n- Fork this repo\n- Clone your repo\n- Install dependencies\n- Checkout a feature branch\n- Feel free to add your features\n- Make sure your features are fully tested\n- Open a pull request, and enjoy <3\n\n### MIT license\nCopyright (c) 2015 lsong\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the &quot;Software&quot;), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in\nall copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\nTHE SOFTWARE.\n\n---\n",
+  "readmeFilename": "README.md",
+  "_id": "koa-routeify@1.0.0",
+  "scripts": {},
+  "_shasum": "d38f3921db1e4bebe7c9ef4abf3a76cf70f40bb4",
+  "_from": "koa-routeify@*"
+}
