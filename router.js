@@ -1,3 +1,4 @@
+var debug  = require('debug');
 
 function matches(ctx, method) {
   if (!method)
@@ -19,6 +20,9 @@ module.exports = function router(app){
       if(!matches(ctx, route.method)) return false;
       if(route.regexp.test(ctx.path)) return true;
     });
+
+    debug('koa-routeify')(routes);
+
     if(!routes.length) return yield* next;// not found.
     var route = routes[ 0 ];
     var args = route.regexp.exec(this.path).slice(1).map(decodeURIComponent);

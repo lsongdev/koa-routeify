@@ -1,5 +1,6 @@
 var fs     = require('fs');
 var path   = require('path');
+var debug  = require('debug');
 var parser = require('./parser');
 var router = require('./router');
 
@@ -18,12 +19,16 @@ module.exports = function(app, options){
     return parser(options.routes + file);
   }));
 
+  debug('koa-routeify')(app.routes);
+
   app.controllers = {};
   app.routes.map(function(route){
     app.controllers[ route.controller ] = require(
       options.controllers + route.controller + '.js'
     );
   });
+
+  debug('koa-routeify')(app.controllers);
 
   return router(app);
 };
