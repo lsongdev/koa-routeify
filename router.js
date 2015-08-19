@@ -37,9 +37,10 @@ module.exports = function router(app){
     if(!action){
       throw new Error(`[Router] can not found action "${route.action}" in "${Controller.name}"`);
     }
-    controller.ctx    = this;
-    controller.body   = this.request.body;
     controller.params = params;
-    yield* action.apply(controller, args);
+    controller.ctx    = this;
+    controller.query  = this.query;
+    controller.body   = this.request.body;
+    yield action.apply(controller, args);
   };
 }

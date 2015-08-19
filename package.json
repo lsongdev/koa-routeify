@@ -1,6 +1,6 @@
 {
   "name": "koa-routeify",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "koa router ",
   "main": "index.js",
   "repository": {
@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/song940/koa-routeify#readme",
   "dependencies": {
-    "debug": "^2.2.0",
-    "path-to-regexp": "^1.2.0"
+    "debug": "latest",
+    "path-to-regexp": "latest"
   }
 }
