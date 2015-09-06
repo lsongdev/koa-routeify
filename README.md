@@ -1,6 +1,6 @@
 ## koa-routeify ![npm](https://badge.fury.io/js/koa-routeify.png)
 
-koa router
+the next router for koajs.
 
 ### Installation
 
@@ -9,6 +9,9 @@ $ npm install koa-routeify --save
 ````
 
 ### Example
+
+app.js
+
 ````javascript
 import koa      from 'koa';
 import routeify from 'koa-routeify';
@@ -19,9 +22,20 @@ app.use(routeify(app));
 
 app.listen(3000);
 ````
+routes/route.js
 
 ```javascript
+get /:name => home#index
+```
 
+controllers/home.js
+
+```javascript
+class Home{
+  index(name){
+    this.send(`Hello ${ name || 'World' }!`);
+  }
+}
 ```
 
 ### API

@@ -4,7 +4,7 @@ var pathToRegexp = require('path-to-regexp');
 const TAG = {
   TO    : '=>',
   EOL   : '\n',
-  SPACE : ' ',
+  SPACE : /\s+/,
   SHARP : '#',
 };
 
