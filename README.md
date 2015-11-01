@@ -2,6 +2,8 @@
 
 the next router for koajs.
 
+[![NPM](https://nodei.co/npm/koa-routeify.png?months=1&downloads=true&downloadRank=true&stars=true)](https://npmjs.org/koa-routeify)
+
 ### Installation
 
 ````
@@ -31,9 +33,9 @@ get /:name => home#index
 controllers/home.js
 
 ```javascript
-class Home{
+class Home {
   index(name){
-    this.send(`Hello ${ name || 'World' }!`);
+    this.ctx.body = `Hello ${ name || 'World' }!`;
   }
 }
 ```

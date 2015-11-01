@@ -1,34 +1,33 @@
 var fs     = require('fs');
 var path   = require('path');
-var debug  = require('debug');
 var parser = require('./parser');
 var router = require('./router');
 
-module.exports = function(app, options){
-  options = options || {};
-  options.root = path.resolve('.');
-  options = Object.assign(options || {}, {
-    routes      : path.join(options.root, './server/routes/'),
-    controllers : path.join(options.root, './server/controllers/')
-  });
+var debug  = require('debug')('koa-routeify');
 
-  app.routes = [].concat.apply([], fs.readdirSync(options.routes)
+module.exports = function(app, options){
+  options = Object.assign({
+    routes      : './routes/',
+    controllers : './controllers/'
+  }, options || {});
+
+  app.routes = [].concat.apply([], fs.readdirSync(path.resolve(options.routes))
   .filter(function(file){
-    return /\.js/.test(file);
+    return /\.js$/.test(file);
   }).map(function(file){
-    return parser(options.routes + file);
+    return parser(path.join(options.routes, file));
   }));
 
-  debug('koa-routeify')(app.routes);
+  debug(app.routes);
 
   app.controllers = {};
   app.routes.map(function(route){
     app.controllers[ route.controller ] = require(
-      options.controllers + route.controller + '.js'
+      path.join(path.resolve(options.controllers), route.controller)
     );
   });
 
-  debug('koa-routeify')(app.controllers);
+  debug(app.controllers);
 
   return router(app);
 };
