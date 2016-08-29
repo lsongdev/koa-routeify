@@ -25,7 +25,9 @@ module.exports = function router(app){
 
     if(!routes.length) return yield* next;// not found.
     var route = routes[ 0 ];
-    var args = route.regexp.exec(this.path).slice(1).map(decodeURIComponent);
+    var args = route.regexp.exec(this.path).slice(1).map(function(arg) {
+      return arg !== undefined ? decodeURIComponent(arg) : undefined; 
+    });
     route.regexp.keys.forEach(function(key, i){
       params[ key.name ] = args[ i ];
     });
