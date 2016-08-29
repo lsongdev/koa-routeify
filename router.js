@@ -41,6 +41,11 @@ module.exports = function router(app){
     controller.ctx    = this;
     controller.query  = this.query;
     controller.body   = this.request.body;
-    yield action.apply(controller, args);
+    try{
+      yield action.apply(controller, args);
+    }catch(err){
+      err.controller = controller;
+      throw err;
+    }
   };
 }
