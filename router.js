@@ -1,4 +1,5 @@
-var debug  = require('debug');
+'use strict';
+const debug  = require('debug');
 
 function matches(ctx, method) {
   if (!method)
@@ -26,7 +27,8 @@ module.exports = function router(app){
     if(!routes.length) return yield* next;// not found.
     var route = routes[ 0 ];
     var args = route.regexp.exec(this.path).slice(1).map(function(arg) {
-      return arg !== undefined ? decodeURIComponent(arg) : undefined; 
+      // avoid decode the `undefined`.
+      return arg === undefined ? arg : decodeURIComponent(arg);
     });
     route.regexp.keys.forEach(function(key, i){
       params[ key.name ] = args[ i ];
