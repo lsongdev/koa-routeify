@@ -51,5 +51,6 @@ module.exports = function router(app){
       err.controller = controller;
       throw err;
     }
+    yield next;
   };
 }
