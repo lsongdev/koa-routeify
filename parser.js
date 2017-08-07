@@ -6,6 +6,7 @@ const TAG = {
   EOL   : '\n',
   SPACE : /\s+/,
   SHARP : '#',
+  EM    : '!'
 };
 
 function removeQuotes(input){
@@ -32,12 +33,20 @@ module.exports = function parseRoute(filename){
     }
     var method_and_route      = removeQuotes(item[0].split(TAG.SPACE));
     var controller_and_action = removeQuotes(item[1].split(TAG.SHARP));
+    var isDev = false;
+    if (method_and_route[0]
+        && method_and_route[0][0]
+        && method_and_route[0][0] === TAG.EM) {
+      method_and_route[0] = method_and_route[0].substring(1);
+      isDev = true;
+    }
     return {
       route       : method_and_route[1],
       method      : method_and_route[0].toUpperCase(),
       regexp      : pathToRegexp(method_and_route[1]),
       controller  : controller_and_action[0],
-      action      : controller_and_action[1]
+      action      : controller_and_action[1],
+      isDev       : isDev
     }
   });
   return routes;

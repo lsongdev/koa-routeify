@@ -19,6 +19,11 @@ module.exports = function router(app){
     var params = {};
     var routes = app.routes.filter(function(route){
       if(!matches(ctx, route.method)) return false;
+      if(process.env.NODE_ENV
+        && process.env.NODE_ENV === 'production'
+        && route.isDev) {
+        return false;
+      }
       if(route.regexp.test(ctx.path)) return true;
     });
 
