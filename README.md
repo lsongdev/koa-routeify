@@ -27,7 +27,9 @@ app.listen(3000);
 routes/route.js
 
 ```javascript
-get /:name => home#index
+get /name/:name => home#index
+// only work in non production env
+!get /age/:age => home#age
 ```
 
 controllers/home.js
@@ -36,6 +38,10 @@ controllers/home.js
 class Home {
   index(name){
     this.ctx.body = `Hello ${ name || 'World' }!`;
+  }
+
+  age(age){
+    this.ctx.body = `The age is ${ age }!`;
   }
 }
 ```
