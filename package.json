@@ -21,6 +21,6 @@
   "homepage": "https://github.com/song940/koa-routeify#readme",
   "dependencies": {
     "debug": "latest",
-    "path-to-regexp": "latest"
+    "path-to-regexp": "1.7.0"
   }
 }
