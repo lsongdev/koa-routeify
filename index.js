@@ -1,9 +1,9 @@
-var fs     = require('fs');
-var path   = require('path');
-var parser = require('./parser');
-var router = require('./router');
+const fs     = require('fs');
+const path   = require('path');
+const parser = require('routing2');
+const router = require('./router');
 
-var debug  = require('debug')('koa-routeify');
+const debug  = require('debug')('koa-routeify');
 
 module.exports = function(app, options){
   options = Object.assign({
@@ -11,12 +11,15 @@ module.exports = function(app, options){
     controllers : './controllers/'
   }, options || {});
 
-  app.routes = [].concat.apply([], fs.readdirSync(path.resolve(options.routes))
-  .filter(function(file){
-    return /\.js$/.test(file);
-  }).map(function(file){
-    return parser(path.join(options.routes, file));
-  }));
+  app.routes = [].concat.apply([],
+    fs.readdirSync(path.resolve(options.routes))
+    .filter(function(file){
+      return /\.js$/.test(file);
+    }).map(function(file){
+      file = path.join(options.routes, file);
+      return parser(fs.readFileSync(file, 'utf8'));
+    })
+  );
 
   debug(app.routes);
 
