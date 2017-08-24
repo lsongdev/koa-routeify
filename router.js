@@ -30,7 +30,7 @@ module.exports = function router(app){
       // avoid decode the `undefined`.
       return arg === undefined ? arg : decodeURIComponent(arg);
     });
-    route.regexp.keys.forEach(function(key, i){
+    route.keys.forEach(function(key, i){
       params[ key.name ] = args[ i ];
     });
     var Controller = app.controllers[ route.controller ];
