@@ -1,5 +1,5 @@
 'use strict';
-const debug  = require('debug');
+const debug  = require('debug')('koa-routeify');
 
 function matches(ctx, method) {
   if (!method)
@@ -17,16 +17,18 @@ module.exports = function router(app){
   return function*(next){
     var ctx = this;
     var params = {};
-    var routes = app.routes.filter(function(route){
+    var match;
+    var route = app.routes.find(function(route){
       if(!matches(ctx, route.method)) return false;
-      if(route.regexp.test(ctx.path)) return true;
+      match = ctx.path.match(route.regexp);
+      if(match) return true;
     });
 
-    debug('koa-routeify')(routes);
+    if(route == null) return yield* next; // not found.
 
-    if(!routes.length) return yield* next;// not found.
-    var route = routes[ 0 ];
-    var args = route.regexp.exec(this.path).slice(1).map(function(arg) {
+    debug(route);
+    
+    var args = match.slice(1).map(function(arg) {
       // avoid decode the `undefined`.
       return arg === undefined ? arg : decodeURIComponent(arg);
     });
