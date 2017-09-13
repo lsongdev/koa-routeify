@@ -2,11 +2,11 @@
 const debug  = require('debug')('koa-routeify');
 
 function matches(ctx, method) {
-  if (!method)
-    return true;
   if (ctx.method === method)
     return true;
   if (method === 'GET' && ctx.method === 'HEAD')
+    return true;
+  if (!method)
     return true;
   return false;
 };
