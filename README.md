@@ -10,9 +10,11 @@ the next router for koajs.
 $ npm install koa-routeify --save
 ````
 
+> If you use `koa` v1.x, please install `koa-routeify` v1.x too.
+
 ### Example
 
-app.js
+app.js(koa 1.x)
 
 ````javascript
 import koa      from 'koa';
