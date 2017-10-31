@@ -14,7 +14,7 @@ $ npm install koa-routeify --save
 
 ### Example
 
-app.js(koa 1.x)
+app.js
 
 ````javascript
 import koa      from 'koa';
