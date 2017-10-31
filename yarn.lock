@@ -8,20 +8,10 @@ debug@latest:
   dependencies:
     ms "2.0.0"
 
-isarray@0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/isarray/-/isarray-0.0.1.tgz#8a18acfca9a8f4177e09abfc6038939b05d1eedf"
-
 ms@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
 
-path-to-regexp@1.7.0:
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/path-to-regexp/-/path-to-regexp-1.7.0.tgz#59fde0f435badacba103a84e9d3bc64e96b9937d"
-  dependencies:
-    isarray "0.0.1"
-
-routing2@^0.0.2:
+routing2@latest:
   version "0.0.2"
-  resolved "https://registry.yarnpkg.com/routing2/-/routing2-0.0.2.tgz#bf179dc4328be3d3ce358603e8d9cbf71be9e0df"
+  resolved "http://r.npm.sankuai.com/routing2/download/routing2-0.0.2.tgz#bf179dc4328be3d3ce358603e8d9cbf71be9e0df"

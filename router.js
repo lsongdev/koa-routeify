@@ -13,9 +13,8 @@ function matches(ctx, method) {
 
 exports.matches = matches;
 
-module.exports = function router(app){
-  return function*(next){
-    var ctx = this;
+module.exports = (app) => {
+  return async (ctx, next) => {
     var params = {};
     var match;
     var route = app.routes.find(function(route){
@@ -24,7 +23,7 @@ module.exports = function router(app){
       if(match) return true;
     });
 
-    if(route == null) return yield* next; // not found.
+    if(route == null) return await next(); // not found.
 
     debug(route);
     
@@ -44,15 +43,15 @@ module.exports = function router(app){
       throw new Error(`[Router] can not found action "${route.action}" in "${Controller.name}"`);
     }
     controller.params = params;
-    controller.ctx    = this;
-    controller.query  = this.query;
-    controller.body   = this.request.body;
+    controller.ctx    = ctx;
+    controller.query  = ctx.query;
+    controller.body   = ctx.request.body;
     try{
-      yield action.apply(controller, args);
+      await action.apply(controller, args);
     }catch(err){
       err.controller = controller;
       throw err;
     }
-    yield next;
+    await next();
   };
 }
