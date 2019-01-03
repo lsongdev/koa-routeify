@@ -17,7 +17,7 @@ module.exports = function(app, options){
       return /\.js$/.test(file);
     }).map(function(file){
       file = path.join(options.routes, file);
-      return parser(fs.readFileSync(file, 'utf8'));
+      return parser.parse(fs.readFileSync(file, 'utf8'));
     })
   );
 
