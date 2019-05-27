@@ -12,6 +12,7 @@ ms@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
 
-routing2@latest:
-  version "0.0.2"
-  resolved "http://r.npm.sankuai.com/routing2/download/routing2-0.0.2.tgz#bf179dc4328be3d3ce358603e8d9cbf71be9e0df"
+routing2@0.0.13:
+  version "0.0.13"
+  resolved "https://registry.npm.taobao.org/routing2/download/routing2-0.0.13.tgz#55fbe8fe01df785727e3d0432ea94b988ea18cec"
+  integrity sha1-Vfvo/gHfeFcn49BDLqlLmI6hjOw=
