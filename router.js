@@ -26,12 +26,12 @@ module.exports = (app) => {
     if(route == null) return await next(); // not found.
 
     debug(route);
-    
+
     var args = match.slice(1).map(function(arg) {
       // avoid decode the `undefined`.
       return arg === undefined ? arg : decodeURIComponent(arg);
     });
-    route.keys.forEach(function(key, i){
+    route.regexp.keys.forEach(function(key, i){
       params[ key.name ] = args[ i ];
     });
     var Controller = app.controllers[ route.controller ];
