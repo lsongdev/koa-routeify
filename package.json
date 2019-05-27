@@ -1,6 +1,6 @@
 {
   "name": "koa-routeify",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "koa router middleware",
   "main": "index.js",
   "repository": {
